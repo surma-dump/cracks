@@ -1,0 +1,28 @@
+===-----------------------------------------------------------------------------
+Replace the maximum filesize of 500000 bytes (= 0x7A120) with something
+bigger like 2.1 GB = (0x7FFFFFFF).
+===-----------------------------------------------------------------------------
+/Applications/SoundConverter.app/Contents/MacOS/SoundConverter:
+
+md5: 61a1d3d45a0357924840d9d19648c460
+
+-(BOOL)[Controller checkSizeAtPath:]
+  +109  00005341  3d20a10700              cmpl        $0x0007a120,%eax
+  +114  00005346  7e5e                    jle         0x000053a6
+
+-(id)[Controller convert:fromExtension:toExtension:]
+  +889  000096ca  3d20a10700              cmpl        $0x0007a120,%eax
+  +894  000096cf  0f86b4000000            jbe         0x00009789
+
+ +1216  00009811  3d20a10700              cmpl        $0x0007a120,%eax
+ +1221  00009816  0f86b4000000            jbe         0x000098d0
+
+ +1812  00009a65  3d20a10700              cmpl        $0x0007a120,%eax
+ +1817  00009a6a  0f86b4000000            jbe         0x00009b24
+
+ +2498  00009d13  3d20a10700              cmpl        $0x0007a120,%eax
+ +2503  00009d18  0f86bc000000            jbe         0x00009dda
+
+-(id)[ConverterManager convertFile:]
+  +238  0000dc0f  3d20a10700              cmpl        $0x0007a120,%eax
+  +243  0000dc14  0f8672010000            jbe         0x0000dd8c

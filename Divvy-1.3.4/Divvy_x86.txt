@@ -1,0 +1,18 @@
+===-----------------------------------------------------------------------------
+Moneyshot
+
+Objective: Set eax != 0 before [+10]
+Current solution: Replace [+6] with assembly of replacement.asm
+===-----------------------------------------------------------------------------
+
+/Applications/Divvy.app/Contents/MacOS/Divvy:
+
+md5: dda6e7de71aa290aebb02c7ef047af89
+
+-(BOOL)[XMLicensingWindowController isLicensed]
+    +0  00018901  55                      pushl       %ebp
+    +1  00018902  89e5                    movl        %esp,%ebp
+    +3  00018904  8b4508                  movl        0x08(%ebp),%eax
+    +6  00018907  0fb6404c                movzbl      0x4c(%eax),%eax
+   +10  0001890b  c9                      leave
+   +11  0001890c  c3                      ret
